@@ -1,0 +1,26 @@
+
+<h1>New Member Sign Up</h1>ese
+
+<!-- when you have validations, like uniquiness, then you may print error message as below -->
+<% if @use.errors.full_messages.any? %>
+	<ul>
+	<@user.erorrs.full_messages.each do |e_m| %>
+	<li><%= e_m %></li><br/> 
+	</ul>
+<% end %>
+
+<%= form_for User.new do |f| %>
+  <%=f.label :fname %>
+  <%=f.text_field :fname %>
+  <%=f.label :lname %>
+  <%=f.text_field :lname %>
+  <%=f.label :email%>
+  <%=f.email_field :email %>
+  <%=f.label :password%>
+  <%=f.password_field :password %>
+
+  <button id="b"><%= f.submit "Create" %></button>
+<% end %>
+
+<% link_to 'All Post', post_path %>
+<% link_to 'Log-Out', log_out path %>

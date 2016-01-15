@@ -1,0 +1,21 @@
+<h1>Yeah I said it</h1>
+
+
+<h1><%= @user.username %>!</h1>
+<% if @user.posts.any? %>
+	<h3>Posts (<%= @user.posts.count %>)</h3>
+	<ul>
+		<% @posts.each do |post| %>
+				<li>
+					<%= link_to post.user.username, post.user %>
+					<%= link_to post.body, post %></a>
+					Posted: <%= time_ago_in_words(post.created_at) %> ago.
+				</li>
+		<% end %>
+	</ul>
+<% end %>
+
+
+<%= link_to "Delete Account", @user, method: :delete %>
+<%= link_to "Edit Accout",edit_user_path(@user) %> 
+
