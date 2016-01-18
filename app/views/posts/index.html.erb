@@ -1,12 +1,14 @@
-<h2>Post Review </h2>
 
 
-<h3>Hi</h3> <h3><%= @current_user %></h3>
+<h2>All Posts </h2>
+
 
 	<% @posts.each do |post| %>
+
 	<ul>
-    <li><strong>What You Up To?</strong> <%= post.body %></li>
-    <li><strong>Username:</strong> <%= post.user.username %></li>
+    <li><strong>Message: </strong> <%= post.body %></li>
+    <li><strong>Created: </strong> <%= post.created_at %>
+    <li><strong>Member: </strong> <%= post.user.username %></li>
   </ul>
   <% end %>
 

@@ -13,3 +13,7 @@
 	 	<input type="submit" value="Submit">
 	</form>
 </div>
+
+
+<button><%= link_to 'Edit My Profile', edit_user_path(current_user) %></button> &nbsp; | &nbsp;
+<button><%= link_to 'My Post', new_post_path(current_user) %></button>

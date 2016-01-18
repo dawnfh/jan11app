@@ -4,7 +4,7 @@
 <!-- when you have validations, like uniquiness, then you may print error message as below -->
 <% if @use.errors.full_messages.any? %>
 	<ul>
-	<@user.erorrs.full_messages.each do |e_m| %>
+	<% @user.erorrs.full_messages.each do |e_m| %>
 	<li><%= e_m %></li><br/> 
 	</ul>
 <% end %>
@@ -17,5 +17,4 @@
   <button id="b"><%= f.submit "Create" %></button>
 <% end %>
 
-<% link_to 'All Post', post_path %>
-<% link_to 'Log-Out', log_out path %>
+<button><% link_to 'All Post', post_path %></button> | <button><% link_to 'Log-Out', log_out path %></button>
