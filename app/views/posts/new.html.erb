@@ -1,0 +1,17 @@
+
+
+
+<div id="container">
+	<h2>Create Post</h2>
+	
+	<form action="/posts" method="POST">
+
+	 	<label for="post_body">Body:</label>
+	 	<br>
+		<textarea id="post_body" name="post[body]" cols="150" rows="15"><%= @post.body %></textarea>
+		<br>
+	 	<input type="submit" value="Submit">
+	</form>
+</div>
+
+<button><%= link_to 'All Post', posts_path %></button> 

@@ -1,12 +1,37 @@
-<h1>Comments</h2>
+<h2>My Post</h2>
 
-	<%= render :partial =>"post" :object =>@post %>
-	<%= link_to 'Edit', :action =>'dit', :id => @post %>
-	<%= link_to 'Back', :action => 'list' %>
+<%= @post.body %>
+<strong>Author: </strong> | <%link_to @post.user.username, user_path(@post.user)%>
+
+<%= link_to "Delete User", post_path(@post), method: :delete %>
+
+
+
+<h3>Comments: | </h3>
+<ul>
+	<% @comments.each do |c| %>
+	<li><%= c.user.username %></li>
+	<li><%= c.content %></li>
+	<li>e%= time_ago_in_words(c.created_at) ago </li>
+	<% end %>
+</ul> 
+
+
+<h3>Add Comments: | </h3>
+	<%= form_for([@post, @comment]) do |ac| %>
+
+		<div class="field">
+			<%= ac.text_area :content, placeholder: "Let's here it..." %>
+		</div>
+		<%= ac.submit "Comment" %>
+		<% end %>
+
+
+
 
 	<% for comment in @post.comments %>
 	<%= comment.body %><hr/>
 	<% end %>
 	<%= form_tag :action => "comment", "body" %></br/>
 	<%= submit_tag "Comment" %>
-</form>
+<% end %>

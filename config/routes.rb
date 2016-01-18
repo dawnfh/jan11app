@@ -1,24 +1,18 @@
 Rails.application.routes.draw do
 
-  get 'comments/create'
 
-  get 'users/index'
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
   # You can have the root of your site routed with "root"
-  root 'home#index'
+  root 'home#home'
+ 
+  get '/login' => 'sessions#new', as: :login
+  post '/login' => 'sessions#create'
+  delete '/destroy' => 'sessions#destroy', as: :logout
 
-  # get '/search' => 'home#search'
 
-  get '/log-in' => 'sessions#new'
-
-  post '/log-in' =>'sessions#create'
-
-  post '/log-out' => 'sessions#destroy'
-
-  get '/posts'  =>'posts#index'
 
   # get '/show' =>   'users#show'
 

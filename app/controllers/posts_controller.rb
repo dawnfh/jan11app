@@ -4,14 +4,22 @@ class PostsController < ApplicationController
 		@posts = Post.all
 	end
 
-	def comment
-		Post.find(params[:id]).comments.create (params[:comments])
-		flash[:notice] = "Comment added."
-		redirect_to :action => 'show', :d => params[:id]
+
+	def show
+		@post = Post.find(params[:id])
+		@comments = @post.comments
+		if current_user
+			@comment = current_user.comments.build
+		end
 	end
 
+	def new
+		@post = Post.new
+	end
+
+
 	def create
-		@post = current.user.post.build
+		@post = current_user.posts.build(post_params) 
 		if @post.save
 			redirect_to user_path(current_user)
 		else

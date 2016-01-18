@@ -1,45 +1,58 @@
 class UsersController < ApplicationController
   def index
-  	@user = User.all
-  end
-
-  def show
-  	@current_user = User.post.where(user_id: session[:user_id])
-  	@post = @user.posts
-
-  	# @user = User.find(params [:id])
+  	@users = User.all
   end
 
   def new
-  	@user = User.new
+    @user = User.new
   end
 
   def create
-		puts params.inspect
-		@user=User.where(username: params)
-		if @user && @user.password ==params[:password]
-			session[:user_id] = @user.id
-			redirect_to user_path
-		else
+    @user = User.new(user_params)
+    if @user.save
+      redirect_to user_path(@user)
+    else
       flash[:alert] = "Please enter a username  & password"
-			redirect_to :back
-		end
+      redirect_to :back
+    end
   end 
 
-  def edit
-  	 puts params.inspect
-  		@user = User.find(params[:id])
+  def show
+    @user = User.find(params[:id])
+    @user
+  end
 
+  def edit
+  	puts params.inspect
+  	@user = User.find(params[:id])
+    @user.save
+  end
 
   def update
-		@user = User.find(params [:id])
-		@user.update(params[:user])
-		@user.save
-		redirect_to @user
-	end
+		@user = User.find(params[:id])
+	 if @user.update_attributes(user_params)
+    @user.save
+		  redirect_to user_path(@user)
+   else
+      render edit_user_path(@user)
+    end
+  end
+  
 
 	def destroy
-		@user = User.find(params[:id])
-		if
+		@user = User.find(params[:id]) 
+		if @user.delete
+      redirect_to user_path, notice: "Deleted Account"
+    else
+      render_error_message
+  end
+end
+
+
+  private 
+
+  def user_params
+    params.require(:user).permit(:username, :password)
+  end
 end
 

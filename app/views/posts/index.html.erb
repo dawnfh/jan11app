@@ -1,13 +1,23 @@
-<h1>Post Review</h1>
+<h2>Post Review </h2>
 
 
-<% @posts.each do |post| %>
+<h3>Hi</h3> <h3><%= @current_user %></h3>
+
+	<% @posts.each do |post| %>
+	<ul>
+    <li><strong>What You Up To?</strong> <%= post.body %></li>
+    <li><strong>Username:</strong> <%= post.user.username %></li>
+  </ul>
+  <% end %>
 
 
-    <li><strong>Body:</strong> <%= post.body %></li>
-    <li><strong>User Id:</strong><%= post.user_id %></li>
+ 
 
-<button><%= link_to 'So you said...', user_path(post.user_id) %></button>
-<% end %>
+
+
+<button><%= link_to 'Edit My Profile', edit_user_path(current_user) %></button> &nbsp; | &nbsp;
+<button><%= link_to 'My Post', new_post_path(current_user) %></button> &nbsp; | &nbsp; 
+<button><%= link_to 'Log Out', logout_path(current_user) %></button> 
+
 
 
