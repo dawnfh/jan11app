@@ -1,1 +1,9 @@
 <h1>New Comments</h1>
+
+<%= form_for @user do |f| %>
+<%= f.label :body %>
+<%= f.text_field body %>
+
+<%= f.submit %>
+
+<% end %>
