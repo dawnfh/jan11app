@@ -1,4 +1,59 @@
-@import "bootstrap";
 
 
 
+body {
+    background: url("cat_night.jpg") no-repeat;
+    background-size: cover;
+    
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    width: 100%;
+}
+
+.navhome {
+    min-height: 10em;
+    display: table-cell;
+    vertical-align: middle }
+
+ul {
+	font-family: 'Josefin Slab', serif;
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  width: 100px;
+  background-color: #f1f1f1;
+}
+
+li a {
+  display: block;
+  color: #000000;
+  padding: 8px 0 8px 16px;
+  text-decoration: none;
+}
+
+/* Change the link color on hover */
+li a:hover {
+  background-color: #eec20d;
+  color: white;
+  text-decoration: none;
+}
+
+.active {
+  background-color: #4CAF50;
+  color: white;
+}
+
+/****** home page ******/
+
+#title {
+	font-family: 'Josefin Slab', serif;
+	color: #eec20d;
+  height: 10em;
+  margin: 0;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  margin-right: -50%;
+  transform: translate(-50%, -220%) 	  
+}

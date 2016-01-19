@@ -6,8 +6,7 @@ class SessionsController < ApplicationController
 	def create
 		puts params.inspect
 		@user = User.where(username: params[:username]).first
-		
-		if @user && @user.password == params[:password]
+		if @user && @user.authenticate == params[:password]
 			session[:user_id] = @user.id
 			redirect_to posts_path
 		else
